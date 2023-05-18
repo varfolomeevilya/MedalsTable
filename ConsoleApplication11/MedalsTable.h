@@ -62,8 +62,8 @@ public:
 			const int* row = medalRows[idx].getMedals();
 			if (row[0] > row[1] && row[0] > row[2]) return row[0];
 			if (row[1] > row[0] && row[1] > row[2]) return row[1];
-
-			
+			if (row[2] > row[0] && row[2] > row[1])return row[2];
+			else return -1;
 		}
 	}
 };
