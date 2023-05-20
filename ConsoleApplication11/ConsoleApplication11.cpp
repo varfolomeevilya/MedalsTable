@@ -2,14 +2,11 @@
 //
 
 #include <iostream>
-
 using namespace std;
 int main()
 {
     
-    
-    
-    
+  
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"

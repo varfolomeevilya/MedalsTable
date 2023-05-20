@@ -22,9 +22,14 @@ private:
 	}
     
 public:
-	MedalsTable() : size{ 0 } {};
-	MedalsTable() : MedalsTable() {};
+	MedalsTable(MedalRow* medalRowss, int Size) : size{ Size }, medalRows{ medalRowss[10] } {}
+	MedalsTable() : MedalsTable{ 1, MedalRow()} {}
 	MedalsTable(){}
+	MedalsTable(MedalsTable&& obj) :medalRows{ obj.medalRows[10] }, size{ obj.size } 
+	{
+		obj.medalRows = nullptr;
+		obj.size = 0;
+	}
 	MedalRow& operator[](const char* country)
 	{
 		int idx{ findCountry(country) };
@@ -44,15 +49,7 @@ public:
 			"table");
 		return medalRows[idx];
 	}
-	friend std::ostream& operator<<(std::ostream out, MedalsTable& medalstable)
-	{
-		for (int i{ 0 }; i < medalstable.size; ++i)
-		{
-			out<<medalstable.medalRows[i];
-			
-		}
-		return out;
-	}
+	friend std::ostream& operator<<(std::ostream out, MedalsTable& medalstable);
 	const int operator()(const char* country)
 	{
 		int max=0;
@@ -68,3 +65,12 @@ public:
 	}
 };
 //this[idx][MedalRow::GOLD]
+std::ostream& operator<<(std::ostream out,  MedalsTable& medalstable)
+{
+	for (int i{ 0 }; i < medalstable.size; ++i)
+	{
+		out << medalstable.medalRows[i];
+
+	}
+	return out;
+}
