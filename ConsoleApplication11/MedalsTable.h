@@ -64,7 +64,7 @@ public:
 		}
 	}
 };
-//this[idx][MedalRow::GOLD]
+
 std::ostream& operator<<(std::ostream out,  MedalsTable& medalstable)
 {
 	for (int i{ 0 }; i < medalstable.size; ++i)

@@ -2,7 +2,20 @@
 //
 
 #include <iostream>
+#include "MedalRow.h"
 using namespace std;
+
+std::ostream& operator<<(std::ostream out, MedalRow& medalRow)
+{
+	out << '[' << medalRow.country << "]-( ";
+	for (int i{ 0 }; i < 3; ++i)
+	{
+		out << medalRow.medals[i];
+		if (i < 2) { out << '\t'; }
+	}
+	out << " )\n";
+	return out;
+}
 int main()
 {
     

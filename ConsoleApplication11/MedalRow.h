@@ -30,6 +30,7 @@ public:
 		return *this;
 	}
 	
+	friend std::ostream& operator<<(std::ostream out, MedalRow& medalRow);
 	const char* getCountry()const { return country; }
 	const int* getMedals()const { return medals; }
 	int& operator[](int idx) 
@@ -52,17 +53,7 @@ public:
 		}
 		std::cout << ")\n";
 	}
-	friend std::ostream& operator<<(std::ostream out, MedalRow& medalRow)
-	{
-		out << '[' << medalRow.country << "]-( ";
-		for (int i{ 0 }; i < 3; ++i)
-		{
-			out << medalRow.medals[i];
-			if (i < 2) { out << '\t'; }
-		}
-		out << " )\n";
-		return out;
-    }
+	
 	
 };
 
